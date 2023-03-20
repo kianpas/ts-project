@@ -19,7 +19,7 @@
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewCard
-            v-for="(filmData, idx) in swFilmsData"
+            v-for="(filmData, idx) in store.swFilmsData"
             :key="idx"
             :title="filmData.title"
             :director="filmData.director"
@@ -30,7 +30,7 @@
   </v-row>
   <v-row class="ma-0">
     <v-col cols="12" align-self="center">
-      <div class="text-h4 my-5">인기 리스트</div>
+      <div class="text-h4 my-5">인물 리스트</div>
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewPeopleCard
@@ -47,12 +47,14 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { swStore } from "../../stores/modules/swStore";
 import PreviewCard from "../card/PreviewCard.vue";
 import PreviewPeopleCard from "../card/PreviewPeopleCard.vue";
 import TestCard from "../card/TestCard.vue";
 import SwDataServices from "../../services/SwDataServices";
 
-const swFilmsData = ref<any>([]);
+const store = swStore();
+
 const swPeopleData = ref<any>([]);
 
 const slides = ref<Array<string>>([
@@ -62,6 +64,7 @@ const slides = ref<Array<string>>([
   "Fourth",
   "Fifth",
 ]);
+
 const colors = ref<Array<string>>([
   "indigo",
   "warning",
@@ -69,26 +72,14 @@ const colors = ref<Array<string>>([
   "red lighten-1",
   "deep-purple accent-4",
 ]);
+
 const length = ref<number>(3);
 const onboarding = ref<number>(0);
-
-const getSwFilmData = async () => {
-  await SwDataServices.getAllFilms()
-    .then((res) => {
-      console.log(res.data);
-      console.log(res.data.results);
-      swFilmsData.value = res.data.results;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
 
 const getSwPeopleData = async () => {
   await SwDataServices.getAllPeople()
     .then((res) => {
       console.log(res.data);
-      console.log(res.data.results);
       swPeopleData.value = res.data.results;
     })
     .catch((e) => {
@@ -97,8 +88,9 @@ const getSwPeopleData = async () => {
 };
 
 onMounted(() => {
-  getSwFilmData();
-  getSwPeopleData();
+  store.getSwFilmData();
+  // getSwFilmData();
+  // getSwPeopleData();
 });
 </script>
 
