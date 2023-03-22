@@ -34,7 +34,7 @@
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewPeopleCard
-            v-for="(peopleData, idx) in swPeopleData"
+            v-for="(peopleData, idx) in store.swPeopleData"
             :key="idx"
             :name="peopleData.name"
           ></PreviewPeopleCard>
@@ -48,14 +48,14 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { swStore } from "../../stores/modules/swStore";
+
 import PreviewCard from "../card/PreviewCard.vue";
 import PreviewPeopleCard from "../card/PreviewPeopleCard.vue";
 import TestCard from "../card/TestCard.vue";
-import SwDataServices from "../../services/SwDataServices";
 
 const store = swStore();
 
-const swPeopleData = ref<any>([]);
+// const swPeopleData = ref<any>([]);
 
 const slides = ref<Array<string>>([
   "First",
@@ -76,21 +76,9 @@ const colors = ref<Array<string>>([
 const length = ref<number>(3);
 const onboarding = ref<number>(0);
 
-const getSwPeopleData = async () => {
-  await SwDataServices.getAllPeople()
-    .then((res) => {
-      console.log(res.data);
-      swPeopleData.value = res.data.results;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
-
 onMounted(() => {
   store.getSwFilmData();
-  // getSwFilmData();
-  // getSwPeopleData();
+  store.getSwPeopleData();
 });
 </script>
 

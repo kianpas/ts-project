@@ -6,15 +6,22 @@ export const swStore = defineStore("sw", () => {
   const swFilmsData = ref<any>([]);
   const swPeopleData = ref<any>([]);
   const getSwFilmData = async () => {
-    return await SwDataServices.getAllFilms()
-      .then((res) => {
-        console.log(res.data);
-        swFilmsData.value = res.data.results;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    try {
+      const response = await SwDataServices.getAllFilms();
+      console.log(response);
+      swFilmsData.value = response.data.results;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const getSwPeopleData = async () => {
+    try {
+      const response = await SwDataServices.getAllPeople();
+      swPeopleData.value = response.data.results;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  return { swFilmsData, swPeopleData, getSwFilmData };
+  return { swFilmsData, swPeopleData, getSwFilmData, getSwPeopleData };
 });
