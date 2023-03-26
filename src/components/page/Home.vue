@@ -19,7 +19,7 @@
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewCard
-            v-for="(filmData, idx) in store.swFilmsData"
+            v-for="(filmData, idx) in swFilmData"
             :key="idx"
             :title="filmData.title"
             :director="filmData.director"
@@ -34,7 +34,7 @@
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewPeopleCard
-            v-for="(peopleData, idx) in store.swPeopleData"
+            v-for="(peopleData, idx) in swPeopleData"
             :key="idx"
             :name="peopleData.name"
           ></PreviewPeopleCard>
@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { swStore } from "../../stores/modules/swStore";
 
 import PreviewCard from "../card/PreviewCard.vue";
@@ -55,7 +55,13 @@ import TestCard from "../card/TestCard.vue";
 
 const store = swStore();
 
-// const swPeopleData = ref<any>([]);
+const swFilmData = computed(() => {
+  return store.swFilmsData;
+});
+
+const swPeopleData = computed(() => {
+  return store.swPeopleData;
+});
 
 const slides = ref<Array<string>>([
   "First",

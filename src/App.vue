@@ -3,7 +3,7 @@
     <SystemBar></SystemBar>
     <NavDrawer></NavDrawer>
     <v-main>
-      <v-container class="py-8 px-6" fluid> 
+      <v-container class="py-8 px-6" fluid>
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -12,8 +12,8 @@
 
 <script setup lang="ts">
 import { defineComponent } from "vue";
-import NavDrawer from "./components/ui/NavDrawer.vue";
-import SystemBar from "./components/ui/SystemBar.vue";
+import NavDrawer from "@ui/NavDrawer.vue";
+import SystemBar from "@ui/SystemBar.vue";
 </script>
 
 <style>
