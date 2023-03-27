@@ -7,6 +7,9 @@ class SwDataService {
   getAllPeople(): Promise<any> {
     return http.get("/people");
   }
+  getAllStarShips(): Promise<any> {
+    return http.get("/starships");
+  }
 }
 
 export default new SwDataService();

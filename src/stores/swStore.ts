@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import SwDataServices from "../../services/SwDataServices";
+import SwDataServices from "../services/SwDataServices";
 
 export const swStore = defineStore("sw", () => {
   const swFilmsData = ref<any>([]);
   const swPeopleData = ref<any>([]);
-  const getSwFilmData = async () => {
+  const swStarshipData = ref<any>([]);
+
+  const getSwFilm = async () => {
     try {
       const response = await SwDataServices.getAllFilms();
       console.log(response);
@@ -14,7 +16,7 @@ export const swStore = defineStore("sw", () => {
       console.error(error);
     }
   };
-  const getSwPeopleData = async () => {
+  const getSwPeople = async () => {
     try {
       const response = await SwDataServices.getAllPeople();
       swPeopleData.value = response.data.results;
@@ -22,6 +24,21 @@ export const swStore = defineStore("sw", () => {
       console.error(error);
     }
   };
+  const getSwStarship = async () => {
+    try {
+      const response = await SwDataServices.getAllStarShips();
+      swStarshipData.value = response.data.results;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  return { swFilmsData, swPeopleData, getSwFilmData, getSwPeopleData };
+  return {
+    swFilmsData,
+    swPeopleData,
+    swStarshipData,
+    getSwFilm,
+    getSwPeople,
+    getSwStarship,
+  };
 });

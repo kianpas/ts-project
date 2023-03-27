@@ -15,7 +15,7 @@
   </v-row>
   <v-row class="ma-0">
     <v-col cols="12" align-self="center">
-      <div class="text-h4 my-5">영화 목록</div>
+      <div class="text-h4 my-5">Film</div>
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewCard
@@ -30,7 +30,7 @@
   </v-row>
   <v-row class="ma-0">
     <v-col cols="12" align-self="center">
-      <div class="text-h4 my-5">인물 리스트</div>
+      <div class="text-h4 my-5">People</div>
       <v-slide-group class="pa-4" show-arrows>
         <v-slide-group-item>
           <PreviewPeopleCard
@@ -42,12 +42,26 @@
       </v-slide-group>
     </v-col>
   </v-row>
+  <v-row class="ma-0">
+    <v-col cols="12" align-self="center">
+      <div class="text-h4 my-5">Starship</div>
+      <v-slide-group class="pa-4" show-arrows>
+        <v-slide-group-item>
+          <PreviewPeopleCard
+            v-for="(starshipData, idx) in swStarshipData"
+            :key="idx"
+            :name="starshipData.name"
+          ></PreviewPeopleCard>
+        </v-slide-group-item>
+      </v-slide-group>
+    </v-col>
+  </v-row>
   <TestCard></TestCard>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import { swStore } from "../../stores/modules/swStore";
+import { swStore } from "../../stores/swStore";
 
 import PreviewCard from "../card/PreviewCard.vue";
 import PreviewPeopleCard from "../card/PreviewPeopleCard.vue";
@@ -61,6 +75,10 @@ const swFilmData = computed(() => {
 
 const swPeopleData = computed(() => {
   return store.swPeopleData;
+});
+
+const swStarshipData = computed(() => {
+  return store.swStarshipData;
 });
 
 const slides = ref<Array<string>>([
@@ -83,8 +101,9 @@ const length = ref<number>(3);
 const onboarding = ref<number>(0);
 
 onMounted(() => {
-  store.getSwFilmData();
-  store.getSwPeopleData();
+  store.getSwFilm();
+  store.getSwPeople();
+  store.getSwStarship();
 });
 </script>
 

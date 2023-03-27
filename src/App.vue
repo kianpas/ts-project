@@ -11,9 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent } from "vue";
-import NavDrawer from "@ui/NavDrawer.vue";
-import SystemBar from "@ui/SystemBar.vue";
+import NavDrawer from "@components/ui/NavDrawer.vue";
+import SystemBar from "@components/ui/SystemBar.vue";
 </script>
 
 <style>
