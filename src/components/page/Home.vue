@@ -67,8 +67,6 @@ import PreviewCard from "@components/card/PreviewCard.vue";
 import PreviewPeopleCard from "@components/card/PreviewPeopleCard.vue";
 import TestCard from "@components/card/TestCard.vue";
 
-console.log(swStore);
-
 const store = swStore();
 
 const swFilmData = computed(() => {

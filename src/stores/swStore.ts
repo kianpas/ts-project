@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import Films from "types/Film";
 import { ref } from "vue";
-import SwDataServices from "../services/SwDataServices";
+import SwDataServices from "@/services/SwDataServices";
 
 export const swStore = defineStore("sw", () => {
   const swFilmsData = ref<Films[]>([]);

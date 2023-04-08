@@ -16,7 +16,7 @@
 
         <v-list><router-link to="/">홈</router-link></v-list>
         <v-list><router-link to="/browse">둘러보기</router-link></v-list>
-        <!-- <v-list><router-link to="/genre">장르</router-link></v-list> -->
+        <v-list><router-link to="/breeds">고양이 종류</router-link></v-list>
         <!-- <v-list><router-link to="/actors">배우</router-link></v-list> -->
       </v-list-item>
     </v-list>

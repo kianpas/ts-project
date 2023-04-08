@@ -13,8 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import axios from "axios";
+import { ref, onMounted, computed } from "vue";
 import PreviewCard from "../card/PreviewCard.vue";
 const searchWords = ref("");
 // export default {

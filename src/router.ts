@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "./components/page/Home.vue";
-import Browse from "./components/page/Browse.vue";
-// import Genre from "./components/page/Genre.vue";
+import Home from "@components/page/Home.vue";
+import Browse from "@components/page/Browse.vue";
+import Breeds from "@components/page/Breed.vue";
 // import Actors from "./components/page/Actors.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", component: Home },
   { path: "/browse", component: Browse },
-  // { path: "/genre", component: Genre },
+  { path: "/breeds", component: Breeds },
   // { path: "/actors", component: Actors },
 ];
 

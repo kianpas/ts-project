@@ -7,4 +7,11 @@ const apiClient: AxiosInstance = axios.create({
   },
 });
 
-export default apiClient;
+const catAxios: AxiosInstance = axios.create({
+  baseURL: "https://catfact.ninja/",
+  headers: {
+    "Content-type": "application/json",
+  },
+});
+
+export { apiClient, catAxios };

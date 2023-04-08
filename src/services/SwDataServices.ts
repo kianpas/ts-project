@@ -1,14 +1,14 @@
-import http from "../http-commons";
+import { apiClient } from "@/http-commons";
 
 class SwDataService {
   getAllFilms(): Promise<any> {
-    return http.get("/films");
+    return apiClient.get("/films");
   }
   getAllPeople(): Promise<any> {
-    return http.get("/people");
+    return apiClient.get("/people");
   }
   getAllStarShips(): Promise<any> {
-    return http.get("/starships");
+    return apiClient.get("/starships");
   }
 }
 
