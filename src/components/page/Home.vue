@@ -61,11 +61,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import { swStore } from "../../stores/swStore";
+import { swStore } from "@/stores/swStore";
 
-import PreviewCard from "../card/PreviewCard.vue";
-import PreviewPeopleCard from "../card/PreviewPeopleCard.vue";
-import TestCard from "../card/TestCard.vue";
+import PreviewCard from "@components/card/PreviewCard.vue";
+import PreviewPeopleCard from "@components/card/PreviewPeopleCard.vue";
+import TestCard from "@components/card/TestCard.vue";
+
+console.log(swStore);
 
 const store = swStore();
 
