@@ -6,9 +6,9 @@
       src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
       cover
     >
-      <v-card-title>{{ props.breed }}</v-card-title>
+      <v-card-title>{{ props.name }}</v-card-title>
     </v-img>
-    <!-- <v-card-subtitle class="pt-4"> {{ props.country }} </v-card-subtitle> -->
+    <!-- <v-card-subtitle class="pt-4"> {{ props.name }} </v-card-subtitle>
     <v-card-text>
       <div>Whitehaven Beach</div>
 
@@ -18,11 +18,11 @@
     <v-card-actions>
       <v-btn color="orange"> Share </v-btn>
       <v-btn color="orange"> Explore </v-btn>
-    </v-card-actions>
+    </v-card-actions> -->
   </v-card>
 </template>
 <script setup lang="ts">
 const props = defineProps<{
-  breed: string;
+  name: string;
 }>();
 </script>

@@ -7,11 +7,11 @@ const apiClient: AxiosInstance = axios.create({
   },
 });
 
-const catAxios: AxiosInstance = axios.create({
-  baseURL: "https://catfact.ninja/",
+const dogAxios: AxiosInstance = axios.create({
+  baseURL: "https://dog.ceo/api",
   headers: {
     "Content-type": "application/json",
   },
 });
 
-export { apiClient, catAxios };
+export { apiClient, dogAxios };

@@ -7,7 +7,9 @@ import Breeds from "@components/page/Breed.vue";
 const routes: Array<RouteRecordRaw> = [
   { path: "/", component: Home },
   { path: "/browse", component: Browse },
-  { path: "/breeds", component: Breeds },
+  { path: "/breeds", component: Breeds, children: [
+    
+  ] },
   // { path: "/actors", component: Actors },
 ];
 
