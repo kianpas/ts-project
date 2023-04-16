@@ -18,16 +18,17 @@
           active-color="primary"
           @click="detailView(item, i)"
         >
-          <!-- <template v-slot:prepend>
-          <v-icon :icon="item.icon"></v-icon>
-        </template> -->
-
           <v-list-item-title v-text="item"></v-list-item-title>
         </v-list-item>
       </router-link>
     </v-list>
+    <router-view name="photo"></router-view>
+    <!-- <PreviewBreedCard
+      v-for="(breedData, idx) in searchResult"
+      :key="idx"
+      :breed="breedData"
+    ></PreviewBreedCard> -->
   </v-row>
-  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
@@ -40,14 +41,13 @@ const searchWord = ref("");
 const selectedBreed = ref("");
 
 const detailView = (item: string, i: number) => {
-  selectedBreed.value = item;
-  console.log("selected Breed : " + selectedBreed.value);
-  store.getBreedImage(selectedBreed.value);
+  selectedBreed.value = item + "/testpage";
+  console.log(selectedBreed.value);
 };
 
-// const dogImageData = computed(() => {
-//   return store.dogBreedImageData;
-// });
+const catBreedData = computed(() => {
+  return store.dogBreedData;
+});
 
 const searchResult = computed(() => {
   return store.dogBreedData.filter((data: any) =>

@@ -56,7 +56,6 @@
       </v-slide-group>
     </v-col>
   </v-row>
-  <TestCard></TestCard>
 </template>
 
 <script setup lang="ts">
@@ -65,7 +64,6 @@ import { swStore } from "@/stores/swStore";
 
 import PreviewCard from "@components/card/PreviewCard.vue";
 import PreviewPeopleCard from "@components/card/PreviewPeopleCard.vue";
-import TestCard from "@components/card/TestCard.vue";
 
 const store = swStore();
 

@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import DogDataService from "@/services/DogDataService";
 
-export const dogStore = defineStore("cat", () => {
+export const dogStore = defineStore("dog", () => {
   const dogBreedData = ref<any>([]);
   const dogBreedImageData = ref<any>([]);
 
@@ -16,10 +16,11 @@ export const dogStore = defineStore("cat", () => {
     }
   };
 
-  const getBreedImage = async () => {
+  const getBreedImage = async (breed: string) => {
     try {
-      const response = await DogDataService.getBreedImage("");
-      dogBreedData.value = Object.keys(response.data.message);
+      const response = await DogDataService.getBreedImage(breed);
+      dogBreedImageData.value = response.data.message;
+      console.log(dogBreedImageData.value);
     } catch (error) {
       console.error(error);
     }
@@ -28,5 +29,7 @@ export const dogStore = defineStore("cat", () => {
   return {
     dogBreedData,
     getBreedList,
+    dogBreedImageData,
+    getBreedImage,
   };
 });
