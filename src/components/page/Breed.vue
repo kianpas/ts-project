@@ -27,7 +27,15 @@
       </router-link>
     </v-list>
   </v-row>
-  <router-view></router-view>
+  <v-col cols="6" v-if="isLoading">
+    <v-progress-linear
+      color="deep-purple-accent-4"
+      indeterminate
+      rounded
+      height="6"
+    ></v-progress-linear>
+  </v-col>
+  <router-view v-else></router-view>
 </template>
 
 <script setup lang="ts">
@@ -38,11 +46,16 @@ import PreviewBreedCard from "@components/card/PreviewBreedCard.vue";
 const store = dogStore();
 const searchWord = ref("");
 const selectedBreed = ref("");
+const isLoading = ref(false);
 
 const detailView = (item: string, i: number) => {
+  isLoading.value = true;
   selectedBreed.value = item;
   console.log("selected Breed : " + selectedBreed.value);
+  console.log("before : " + isLoading.value);
   store.getBreedImage(selectedBreed.value);
+  isLoading.value = false;
+  console.log("after : " + isLoading.value);
 };
 
 // const dogImageData = computed(() => {
@@ -56,7 +69,7 @@ const searchResult = computed(() => {
 });
 
 onMounted(() => {
-  store.getBreedList();
+  // store.getBreedList();
 });
 </script>
 

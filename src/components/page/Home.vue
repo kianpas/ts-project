@@ -99,9 +99,9 @@ const length = ref<number>(3);
 const onboarding = ref<number>(0);
 
 onMounted(() => {
-  store.getSwFilm();
-  store.getSwPeople();
-  store.getSwStarship();
+  // store.getSwFilm();
+  // store.getSwPeople();
+  // store.getSwStarship();
 });
 </script>
 

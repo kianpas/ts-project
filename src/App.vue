@@ -11,8 +11,20 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, computed } from "vue";
 import NavDrawer from "@components/ui/NavDrawer.vue";
 import SystemBar from "@components/ui/SystemBar.vue";
+import { dogStore } from "@/stores/dogStore.js";
+import { swStore } from "@/stores/swStore";
+const storeDog = dogStore();
+const storeSw = swStore();
+
+onMounted(() => {
+  storeDog.getBreedList();
+  storeSw.getSwFilm();
+  storeSw.getSwPeople();
+  storeSw.getSwStarship();
+});
 </script>
 
 <style>
